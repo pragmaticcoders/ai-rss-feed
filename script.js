@@ -52,11 +52,11 @@ function displayFeeds(feeds) {
 
                 <div class="content">
                     <div class="summary-section">
-                        ${feed.summary.split('Key takeaways:')[0]}
+                        ${feed.summary.split('Key Takeaways:')[0]}
                     </div>
                     <div class="key-takeaways-section">
                         <strong>Key takeaways:</strong>
-                        ${feed.summary.split('Key takeaways:')[1] || ''}
+                        ${feed.summary.split('Key Takeaways:')[1] || ''}
                     </div>
                     <br>
                     <a href="${feed.source_url}" target="_blank">${feed.source}</a>
