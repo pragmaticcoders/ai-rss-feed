@@ -1,0 +1,20 @@
+/* Add some spacing between feed items */
+.box {
+    margin-bottom: 1.5rem;
+}
+
+/* Add spacing between tags */
+.level-left .tag {
+    margin-right: 0.5rem;
+}
+
+/* Make the filter menu stick to top when scrolling */
+#filter-menu {
+    position: sticky;
+    top: 1rem;
+}
+
+/* Add some spacing between filter fields */
+.field {
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Financial Feeds</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar is-primary">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <h1 class="title has-text-white">AI Financial Feeds</h1>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content and Filtering Menu -->
+    <main>
+        <div class="section">
+            <div class="container">
+                <div class="columns">
+                    <!-- Main Content Area -->
+                    <div class="column is-three-quarters">
+                        <div id="feeds">
+                            <!-- Feeds will be displayed here -->
+                        </div>
+                    </div>
+                    <!-- Filtering Menu -->
+                    <div class="column">
+                        <div id="filter-menu">
+                            <!-- Filter Type Selector -->
+                            <div class="field">
+                                <label class="label">Filter By</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select id="filter-type">
+                                            <option value="">Select Type</option>
+                                            <option value="impact">Impact</option>
+                                            <option value="sentiment">Sentiment</option>
+                                            <option value="category">Category</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Filter Value Selector -->
+                            <div class="field">
+                                <label class="label">Value</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select id="filter-value">
+                                            <option value="">Select Value</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 AI Financial Feeds</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
