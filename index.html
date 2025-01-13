@@ -21,20 +21,9 @@
     <main>
         <div class="section">
             <div class="container">
-                <div class="columns">
-                    <!-- Main Content Area -->
-                    <div class="column is-three-quarters">
-                        <!-- Loading Indicator -->
-                        <div id="loading" class="is-hidden">
-                            <progress class="progress is-small is-primary" max="100">Loading...</progress>
-                        </div>
-                        <!-- Feeds Container -->
-                        <div id="feeds">
-                            <!-- Feeds will be displayed here -->
-                        </div>
-                    </div>
+                <div class="columns is-variable is-8">
                     <!-- Filtering Menu -->
-                    <div class="column">
+                    <div class="column is-one-quarter-desktop is-full-mobile" id="filter-column">
                         <div id="filter-menu">
                             <div class="card">
                                 <div class="card-content">
@@ -67,6 +56,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Main Content Area -->
+                    <div class="column" id="feeds-column">
+                        <!-- Loading Indicator -->
+                        <div id="loading" class="is-hidden">
+                            <progress class="progress is-small is-primary" max="100">Loading...</progress>
+                        </div>
+                        <!-- Feeds Container -->
+                        <div id="feeds">
+                            <!-- Feeds will be displayed here -->
                         </div>
                     </div>
                 </div>

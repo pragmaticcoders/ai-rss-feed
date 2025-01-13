@@ -39,30 +39,29 @@ function displayFeeds(feeds) {
 
     feeds.forEach(feed => {
         const feedElement = document.createElement('div');
-        feedElement.classList.add('box');
+        feedElement.classList.add('card', 'mb-5');
 
         feedElement.innerHTML = `
-            <article class="media">
-                <div class="media-content">
-                    <div class="content">
-                        <p>
-                            <strong>${feed.title}</strong> <small>${feed.publication_date}</small>
-                            <br>
-                            ${feed.summary}
-                        </p>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">${feed.title}</p>
+                        <p class="subtitle is-6">${feed.publication_date}</p>
                     </div>
-                    <nav class="level is-mobile">
-                        <div class="level-left">
-                            <span class="tag is-info">${feed.sentiment}</span>
-                            <span class="tag is-warning">${feed.impact}</span>
-                            <span class="tag is-success">${feed.category}</span>
-                        </div>
-                    </nav>
                 </div>
-                <div class="media-right">
-                    <a href="${feed.source_url}" target="_blank" class="button is-link">${feed.source}</a>
+
+                <div class="content">
+                    ${feed.summary}
+                    <br>
+                    <a href="${feed.source_url}" target="_blank">${feed.source}</a>
+                    <br><br>
+                    <div class="tags">
+                        <span class="tag is-info">${feed.sentiment}</span>
+                        <span class="tag is-warning">${feed.impact}</span>
+                        <span class="tag is-success">${feed.category}</span>
+                    </div>
                 </div>
-            </article>
+            </div>
         `;
 
         feedsContainer.appendChild(feedElement);
