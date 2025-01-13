@@ -2,6 +2,9 @@ const filterTypeSelect = document.getElementById('filter-type');
 const filterValueSelect = document.getElementById('filter-value');
 
 function fetchFeeds() {
+    // Show the loading indicator
+    document.getElementById('loading').classList.remove('is-hidden');
+
     const requestData = {
         "filter_by": filterTypeSelect.value || "",
         "filter": filterValueSelect.value || "",
@@ -23,6 +26,10 @@ function fetchFeeds() {
             console.error('Error fetching feeds:', error);
             const feedsContainer = document.getElementById('feeds');
             feedsContainer.innerHTML = '<div class="notification is-danger">Error loading feeds. Please try again later.</div>';
+        })
+        .finally(() => {
+            // Hide the loading indicator
+            document.getElementById('loading').classList.add('is-hidden');
         });
 }
 
@@ -53,7 +60,7 @@ function displayFeeds(feeds) {
                     </nav>
                 </div>
                 <div class="media-right">
-                    <a href="${feed.source_url}" target="_blank" class="button is-link">Source</a>
+                    <a href="${feed.source_url}" target="_blank" class="button is-link">${feed.source}</a>
                 </div>
             </article>
         `;

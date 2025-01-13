@@ -9,15 +9,13 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <nav class="navbar is-primary">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="#">
-                    <h1 class="title has-text-white">AI Financial Feeds</h1>
-                </a>
-            </div>
-        </nav>
-    </header>
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title has-text-centered">AI Financial Feeds</h1>
+        </div>
+      </div>
+    </section>
 
     <!-- Main Content and Filtering Menu -->
     <main>
@@ -26,6 +24,11 @@
                 <div class="columns">
                     <!-- Main Content Area -->
                     <div class="column is-three-quarters">
+                        <!-- Loading Indicator -->
+                        <div id="loading" class="is-hidden">
+                            <progress class="progress is-small is-primary" max="100">Loading...</progress>
+                        </div>
+                        <!-- Feeds Container -->
                         <div id="feeds">
                             <!-- Feeds will be displayed here -->
                         </div>
@@ -33,29 +36,34 @@
                     <!-- Filtering Menu -->
                     <div class="column">
                         <div id="filter-menu">
-                            <!-- Filter Type Selector -->
-                            <div class="field">
-                                <label class="label">Filter By</label>
-                                <div class="control">
-                                    <div class="select">
-                                        <select id="filter-type">
-                                            <option value="">Select Type</option>
-                                            <option value="impact">Impact</option>
-                                            <option value="sentiment">Sentiment</option>
-                                            <option value="category">Category</option>
-                                        </select>
+                            <div class="card">
+                                <div class="card-content">
+                                    <p class="title is-5">Filter Feeds</p>
+                                    <!-- Filter Type Selector -->
+                                    <div class="field">
+                                        <label class="label">Filter By</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="filter-type">
+                                                    <option value="">Select Type</option>
+                                                    <option value="impact">Impact</option>
+                                                    <option value="sentiment">Sentiment</option>
+                                                    <option value="category">Category</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <!-- Filter Value Selector -->
-                            <div class="field">
-                                <label class="label">Value</label>
-                                <div class="control">
-                                    <div class="select">
-                                        <select id="filter-value">
-                                            <option value="">Select Value</option>
-                                        </select>
+                                    <!-- Filter Value Selector -->
+                                    <div class="field">
+                                        <label class="label">Value</label>
+                                        <div class="control">
+                                            <div class="select is-fullwidth">
+                                                <select id="filter-value">
+                                                    <option value="">Select Value</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

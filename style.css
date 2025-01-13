@@ -1,20 +1,30 @@
-/* Add some spacing between feed items */
+/* Center the header title */
+.hero .title {
+    text-align: center;
+}
+
+/* Style the cards */
+#filter-menu .card {
+    margin-top: 1rem;
+}
+
+/* Adjust feed item spacing */
 .box {
     margin-bottom: 1.5rem;
 }
 
-/* Add spacing between tags */
+/* Style the tags */
 .level-left .tag {
     margin-right: 0.5rem;
 }
 
-/* Make the filter menu stick to top when scrolling */
+/* Make the filter menu sticky */
 #filter-menu {
     position: sticky;
-    top: 1rem;
+    top: 2rem;
 }
 
-/* Add some spacing between filter fields */
-.field {
-    margin-bottom: 1.5rem;
+/* Enhance the appearance of the progress bar */
+#loading {
+    margin-bottom: 1rem;
 }
