@@ -54,6 +54,7 @@ function displayFeeds(feeds) {
                     <div class="summary-section">
                         ${feed.summary.split('Key Takeaways:')[0]}
                     </div>
+                    <br>
                     <div class="key-takeaways-section">
                         <strong>Key takeaways:</strong>
                         ${(feed.summary.split('Key Takeaways:')[1] || '').split('•').join('<br>•')}
