@@ -90,8 +90,8 @@ filterTypeSelect.addEventListener('change', () => {
         filterValueSelect.appendChild(option);
     });
 
-    // Fetch feeds with the new filter
-    fetchFeeds();
+    // Reset the filter value to default
+    filterValueSelect.value = "";
 });
 
 filterValueSelect.addEventListener('change', fetchFeeds);
