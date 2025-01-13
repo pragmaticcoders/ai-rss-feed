@@ -98,4 +98,4 @@ filterValueSelect.addEventListener('change', fetchFeeds);
 
 // Fetch feeds initially and then every 30 seconds
 fetchFeeds();
-setInterval(fetchFeeds, 30000);
+setInterval(fetchFeeds, 3000000);
