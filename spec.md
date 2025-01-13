@@ -12,30 +12,7 @@
 - Use Bulma CSS framework for styling
 - Use JavaScript to fetch the feeds and display them
 - API can be found here: https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5
-- The API request format:
-```
-{
-	"filter_by": "impact", // The field by which to filter the financial feeds (e.g., impact, sentiment, category)
-	"filter": "HIGH", // The value of the filter to apply (e.g., HIGH, MEDIUM, LOW for impact)
-	"limit": 10 // The maximum number of financial feeds to retrieve
-}
-```
-- The API response format:
-```
-{
-  "feeds": [
-    {
-      "publication_date": "2024-01-01", // The date when the financial feed was published
-      "title": "Financial Feed", // The title of the financial feed
-      "summary": "Financial Feed", // A brief summary of the financial feed content
-      "source": "Financial Feed", // The name of the source providing the financial feed
-      "source_url": "Financial Feed", // The URL to the original source of the financial feed
-      "sentinement": "Financial Feed", // The sentiment analysis result of the financial feed, indicating a bullish, neutral, or bearish sentiment
-      "impact": "Financial Feed", // The estimated impact of the financial feed on the market or a specific sector - LOW, MEDIUM, HIGH
-      "category": "Financial Feed" // The category or type of information provided by the financial feed (e.g., stocks, bonds, commmodities)
-    }
-  ]
-}
+
 ```
 
 ## Context
@@ -66,13 +43,36 @@ MODIFY index.html:
 
 2. Fetch data 
 ```aider
-CREATE script.js:
-    use JavaScript to fetch the feeds and display them,
+MODIFY script.js:
+    use JavaScript to fetch the feeds,
     fetch the feeds every 30 seconds,
     display the publication date, title, summary, source, source_url, sentinement, impact and category,
+    
+    Request format:
+    {
+        "filter_by": "impact", // The field by which to filter the financial feeds (e.g., impact, sentiment, category)
+        "filter": "HIGH", // The value of the filter to apply (e.g., HIGH, MEDIUM, LOW for impact)
+        "limit": 10 // The maximum number of financial feeds to retrieve
+    }
+
+    Response format:
+    {
+    "data": [
+        {
+        "publication_date": "2024-01-01", // The date when the financial feed was published
+        "title": "Financial Feed", // The title of the financial feed
+        "summary": "Financial Feed", // A brief summary of the financial feed content
+        "source": "Financial Feed", // The name of the source providing the financial feed
+        "source_url": "Financial Feed", // The URL to the original source of the financial feed
+        "sentinement": "Financial Feed", // The sentiment analysis result of the financial feed, indicating a bullish, neutral, or bearish sentiment
+        "impact": "Financial Feed", // The estimated impact of the financial feed on the market or a specific sector - LOW, MEDIUM, HIGH
+        "category": "Financial Feed" // The category or type of information provided by the financial feed (e.g., stocks, bonds, commmodities)
+        }
+    ]
+    }
 ```
 
-3. [Third task - what is the third task?]
+3. Support filtering
 ```aider
 MODIFY index.html:
     SUPPORT filtering the feeds by impact, sentiment and category using selectors for field and value,
@@ -80,6 +80,18 @@ MODIFY index.html:
     the dropdown menu should be in the top-right corner of the page,
     the dropdown menu should have the following options:
         - impact: LOW, MEDIUM, HIGH
-        - sentiment: BULLISH, NEUTRAL, BEARISH
-        - category: STOCKS, BONDS, COMMODITIES
+        - sentiment: Bullish, Neutral, Bearish
+        - category: Stocks, Bonds, Commodities
+    filtering must be handled with two selectors first for type second for value
+```
+
+4. Display feeds
+```aider
+MODIFY index.html:
+    USING script.js display all fetched feeds in the appriopriate container
+```
+5.Handle filtering
+```aider
+MODIFY index.html:
+    USING script.js refetch feeds filtered by picked filter
 ```

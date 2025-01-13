@@ -8,7 +8,7 @@ function fetchFeeds() {
         "limit": 10
     };
 
-    fetch('YOUR_API_ENDPOINT', {
+    fetch(process.env.URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
