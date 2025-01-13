@@ -86,7 +86,15 @@ filterTypeSelect.addEventListener('change', () => {
     } else if (filterType === 'sentiment') {
         options = ['Bullish', 'Neutral', 'Bearish'];
     } else if (filterType === 'category') {
-        options = ['Stocks', 'Bonds', 'Commodities'];
+        options = [
+            'Equity Investments',
+            'Fixed-Income Investments',
+            'Cash and Cash Equivalents',
+            'Alternative Investments',
+            'Investment Strategies',
+            'Market Types',
+            'Investment Vehicles'
+        ];
     }
 
     // Populate filter values
