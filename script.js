@@ -8,7 +8,7 @@ function fetchFeeds() {
         "limit": 10
     };
 
-    fetch(process.env.URL, {
+    fetch('https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -71,9 +71,9 @@ filterTypeSelect.addEventListener('change', () => {
     if (filterType === 'impact') {
         options = ['LOW', 'MEDIUM', 'HIGH'];
     } else if (filterType === 'sentiment') {
-        options = ['BULLISH', 'NEUTRAL', 'BEARISH'];
+        options = ['Bullish', 'Neutral', 'Bearish'];
     } else if (filterType === 'category') {
-        options = ['STOCKS', 'BONDS', 'COMMODITIES'];
+        options = ['Stocks', 'Bonds', 'Commodities'];
     }
 
     // Populate filter values
