@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Financial Feeds</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero is-primary">
+            <div class="hero-body">
+                <h1 class="title">AI Financial Feeds</h1>
+            </div>
+        </header>
+
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <section id="legend">
+                    <h2 class="subtitle">Legend</h2>
+                    <div>
+                        <span class="tag is-success">Low Impact</span>
+                        <span class="tag is-warning">Medium Impact</span>
+                        <span class="tag is-danger">High Impact</span>
+                    </div>
+                    <div>
+                        <span class="icon has-text-success"><i class="fas fa-arrow-up"></i></span> Bullish
+                        <span class="icon has-text-grey"><i class="fas fa-minus"></i></span> Neutral
+                        <span class="icon has-text-danger"><i class="fas fa-arrow-down"></i></span> Bearish
+                    </div>
+                </section>
+
+                <form id="feed-form">
+                    <div class="field">
+                        <label class="label">Last n feeds</label>
+                        <div class="control">
+                            <input class="input" type="number" name="limit" min="1" value="10">
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Fetch Feeds</button>
+                    </div>
+                </form>
+
+                <div id="feeds"></div>
+            </div>
+
+            <div class="column">
+                <div id="assets-overview">
+                    <h2 class="title is-4">Assets Overview</h2>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>&copy; 2023 AI Financial Feeds</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
