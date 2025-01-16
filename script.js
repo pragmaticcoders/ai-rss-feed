@@ -158,7 +158,7 @@ document.getElementById('feed-form').addEventListener('submit', function(event) 
 fetchFeeds();
 
 // Set up periodic fetch every 5 minutes
-const FETCH_INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
+const FETCH_INTERVAL = 3600 * 1000; // 1 hour in milliseconds
 let fetchTimer = setInterval(fetchFeeds, FETCH_INTERVAL);
 
 // Reset interval when page visibility changes
