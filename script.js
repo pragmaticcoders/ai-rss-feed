@@ -6,10 +6,13 @@ function fetchFeeds() {
     document.getElementById('loading').classList.remove('is-hidden');
     
     const limitInput = document.querySelector('input[name="limit"]');
+    const assetSelect = document.querySelector('select[name="asset"]');
     const limit = limitInput.value || 10;
+    const selectedAsset = assetSelect.value;
 
     const requestData = {
-        "limit": parseInt(limit)
+        "limit": parseInt(limit),
+        "asset": selectedAsset === 'all' ? null : selectedAsset
     };
 
     fetch(API_URL, {
@@ -222,9 +225,13 @@ function countOccurrences(array) {
     return Object.entries(counts).map(([value, count]) => ({ value, count }));
 }
 
-// Add event listener to the form
+// Add event listeners
 document.getElementById('feed-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    fetchFeeds();
+});
+
+document.getElementById('asset-select').addEventListener('change', function() {
     fetchFeeds();
 });
 
