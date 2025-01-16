@@ -1,3 +1,6 @@
+// Get API URL from environment variable, fallback to /api/feeds if not set
+const API_URL = process.env.URL || '/api/feeds';
+
 function fetchFeeds() {
     const limitInput = document.querySelector('input[name="limit"]');
     const limit = limitInput.value || 10;
@@ -6,7 +9,7 @@ function fetchFeeds() {
         "limit": parseInt(limit)
     };
 
-    fetch('/api/feeds', {
+    fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
