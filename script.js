@@ -107,21 +107,25 @@ function getSentimentIcon(sentiment) {
 
 function updateAssetsOverview(feedsArray) {
     const assetsOverview = document.getElementById('assets-overview');
+    const selectedAsset = document.querySelector('select[name="asset"]').value;
     let assetsMap = {};
 
     feedsArray.forEach(feeds => {
         feeds.forEach(feed => {
             feed.assets.forEach(asset => {
                 const assetName = asset.asset;
-                if (!assetsMap[assetName]) {
-                    assetsMap[assetName] = {
-                        name: assetName,
-                        impacts: [],
-                        sentiments: []
-                    };
+                // Only include selected asset or all assets if "all" is selected
+                if (selectedAsset === 'all' || selectedAsset === assetName) {
+                    if (!assetsMap[assetName]) {
+                        assetsMap[assetName] = {
+                            name: assetName,
+                            impacts: [],
+                            sentiments: []
+                        };
+                    }
+                    assetsMap[assetName].impacts.push(asset.impact);
+                    assetsMap[assetName].sentiments.push(asset.sentiment);
                 }
-                assetsMap[assetName].impacts.push(asset.impact);
-                assetsMap[assetName].sentiments.push(asset.sentiment);
             });
         });
     });
