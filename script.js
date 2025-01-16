@@ -149,8 +149,19 @@ document.getElementById('feed-form').addEventListener('submit', function(event) 
     fetchFeeds();
 });
 
-// Fetch feeds every 5 minutes (300,000 milliseconds)
-setInterval(fetchFeeds, 300000);
-
-// Also fetch feeds immediately when the page loads
+// Initial fetch
 fetchFeeds();
+
+// Set up periodic fetch every 5 minutes
+const FETCH_INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
+let fetchTimer = setInterval(fetchFeeds, FETCH_INTERVAL);
+
+// Reset interval when page visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(fetchTimer);
+    } else {
+        fetchFeeds(); // Fetch immediately when page becomes visible
+        fetchTimer = setInterval(fetchFeeds, FETCH_INTERVAL);
+    }
+});

@@ -46,12 +46,22 @@ body {
 }
 
 #loading {
-    padding: 2rem;
+    margin: 1rem 0;
 }
 
-#loading .icon {
-    font-size: 2rem;
-    color: #667eea;
+#loading .progress {
+    height: 4px;
+    border-radius: 2px;
+}
+
+@keyframes progressAnimation {
+    0% { margin-left: -50%; }
+    100% { margin-left: 100%; }
+}
+
+#loading .progress::-webkit-progress-value {
+    animation: progressAnimation 1.5s infinite linear;
+    background: linear-gradient(to right, transparent, #667eea, transparent);
 }
 
 #assets-overview .box {

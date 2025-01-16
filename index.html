@@ -21,15 +21,23 @@
             <div class="column is-two-thirds">
                 <section id="legend">
                     <h2 class="subtitle">Legend</h2>
-                    <div>
-                        <span class="tag is-success">Low Impact</span>
-                        <span class="tag is-warning">Medium Impact</span>
-                        <span class="tag is-danger">High Impact</span>
-                    </div>
-                    <div>
-                        <span class="icon has-text-success"><i class="fas fa-arrow-up"></i></span> Bullish
-                        <span class="icon has-text-grey"><i class="fas fa-minus"></i></span> Neutral
-                        <span class="icon has-text-danger"><i class="fas fa-arrow-down"></i></span> Bearish
+                    <div class="columns">
+                        <div class="column">
+                            <h3 class="is-size-6 mb-2">Impact Levels</h3>
+                            <div class="tags">
+                                <span class="tag is-success">Low Impact</span>
+                                <span class="tag is-warning">Medium Impact</span>
+                                <span class="tag is-danger">High Impact</span>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h3 class="is-size-6 mb-2">Sentiment Indicators</h3>
+                            <div>
+                                <span class="icon has-text-success"><i class="fas fa-arrow-up"></i></span> Bullish
+                                <span class="icon has-text-grey"><i class="fas fa-minus"></i></span> Neutral
+                                <span class="icon has-text-danger"><i class="fas fa-arrow-down"></i></span> Bearish
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -45,10 +53,8 @@
                     </div>
                 </form>
 
-                <div id="loading" class="has-text-centered is-hidden">
-                    <span class="icon is-large">
-                        <i class="fas fa-spinner fa-pulse"></i>
-                    </span>
+                <div id="loading" class="is-hidden">
+                    <progress class="progress is-primary is-small" max="100"></progress>
                 </div>
                 <div id="feeds"></div>
             </div>
