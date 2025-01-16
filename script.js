@@ -39,6 +39,7 @@ function displayFeeds(feedsArray) {
         feeds.forEach(feed => {
             const feedElement = document.createElement('div');
             feedElement.classList.add('card', 'mb-5');
+            feedElement.style.animationDelay = `${index * 0.1}s`;
 
             feedElement.innerHTML = `
                 <div class="card-content">
