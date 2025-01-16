@@ -28,10 +28,22 @@ body {
 
 #feed-form {
     background: white;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 10px;
     margin-bottom: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#feed-form .input[type="number"] {
+    text-align: center;
+}
+
+#feed-form .button {
+    transition: transform 0.2s ease;
+}
+
+#feed-form .button:hover {
+    transform: scale(1.05);
 }
 
 .card {
