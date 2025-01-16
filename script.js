@@ -12,7 +12,7 @@ function fetchFeeds() {
 
     const requestData = {
         "limit": parseInt(limit),
-        "asset": selectedAsset === 'all' ? null : selectedAsset
+        "asset": selectedAsset
     };
 
     fetch(API_URL, {
