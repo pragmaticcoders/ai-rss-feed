@@ -120,21 +120,32 @@ function updateAssetsOverview(feedsArray) {
 
     Object.values(assetsMap).forEach(asset => {
         const assetElement = document.createElement('div');
-        assetElement.classList.add('box');
+        assetElement.classList.add('asset-box');
         assetElement.innerHTML = `
-            <h3 class="subtitle">${asset.name}</h3>
-            <p>Impacts:</p>
-            <ul>
-                ${countOccurrences(asset.impacts).map(impactCount => `
-                    <li>${impactCount.value}: ${impactCount.count}</li>
-                `).join('')}
-            </ul>
-            <p>Sentiments:</p>
-            <ul>
-                ${countOccurrences(asset.sentiments).map(sentimentCount => `
-                    <li>${sentimentCount.value}: ${sentimentCount.count}</li>
-                `).join('')}
-            </ul>
+            <h3 class="is-size-5 mb-3 has-text-weight-semibold">${asset.name}</h3>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <h4 class="is-size-6 mb-2">Impacts</h4>
+                    <div class="tags">
+                        ${countOccurrences(asset.impacts).map(impactCount => `
+                            <span class="tag is-${getImpactClass(impactCount.value)}">
+                                ${impactCount.value} (${impactCount.count})
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="is-size-6 mb-2">Sentiments</h4>
+                    <div>
+                        ${countOccurrences(asset.sentiments).map(sentimentCount => `
+                            <div class="mb-1">
+                                ${getSentimentIcon(sentimentCount.value)}
+                                ${sentimentCount.value} (${sentimentCount.count})
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
         `;
         assetsOverview.appendChild(assetElement);
     });

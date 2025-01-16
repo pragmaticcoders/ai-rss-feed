@@ -76,13 +76,23 @@ body {
     background: linear-gradient(to right, transparent, #667eea, transparent);
 }
 
-#assets-overview .box {
-    margin-bottom: 15px;
-    transition: transform 0.2s ease;
+#assets-overview {
+    background: white;
+    padding: 1.5rem;
     border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#assets-overview .box:hover {
+#assets-overview .asset-box {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+#assets-overview .asset-box:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
