@@ -1,5 +1,5 @@
 // Get API URL from environment variable, fallback to /api/feeds if not set
-const API_URL = process.env.URL || '/api/feeds';
+const API_URL = process.env.URL || 'https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5';
 
 function fetchFeeds() {
     const limitInput = document.querySelector('input[name="limit"]');
