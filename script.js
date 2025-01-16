@@ -21,6 +21,11 @@ function fetchFeeds() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Received data:', data);
+        if (!data.data || !Array.isArray(data.data)) {
+            console.error('Invalid data format received:', data);
+            return;
+        }
         displayFeeds(data.data);
         updateAssetsOverview(data.data);
         document.getElementById('loading').classList.add('is-hidden');
@@ -35,11 +40,11 @@ function displayFeeds(feedsArray) {
     const feedsContainer = document.getElementById('feeds');
     feedsContainer.innerHTML = '';
 
-    feedsArray.forEach(feeds => {
-        feeds.forEach(feed => {
+    feedsArray.forEach((feeds, groupIndex) => {
+        feeds.forEach((feed, index) => {
             const feedElement = document.createElement('div');
             feedElement.classList.add('card', 'mb-5');
-            feedElement.style.animationDelay = `${index * 0.1}s`;
+            feedElement.style.animationDelay = `${(groupIndex * feeds.length + index) * 0.1}s`;
 
             feedElement.innerHTML = `
                 <div class="card-content">
