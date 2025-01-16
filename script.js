@@ -133,17 +133,18 @@ function updateAssetsOverview(feedsArray) {
             <div class="columns is-mobile">
                 <div class="column">
                     <h4 class="is-size-6 mb-2">Impacts</h4>
-                    <div class="tags">
+                    <div class="tags mb-2">
                         ${countOccurrences(asset.impacts).map(impactCount => `
                             <span class="tag is-${getImpactClass(impactCount.value)}">
                                 ${impactCount.value} (${impactCount.count})
                             </span>
                         `).join('')}
                     </div>
+                    <canvas id="impact-chart-${asset.name.replace(/\s+/g, '-')}" height="150"></canvas>
                 </div>
                 <div class="column">
                     <h4 class="is-size-6 mb-2">Sentiments</h4>
-                    <div>
+                    <div class="mb-2">
                         ${countOccurrences(asset.sentiments).map(sentimentCount => `
                             <div class="mb-1">
                                 ${getSentimentIcon(sentimentCount.value)}
@@ -151,10 +152,65 @@ function updateAssetsOverview(feedsArray) {
                             </div>
                         `).join('')}
                     </div>
+                    <canvas id="sentiment-chart-${asset.name.replace(/\s+/g, '-')}" height="150"></canvas>
                 </div>
             </div>
         `;
         assetsOverview.appendChild(assetElement);
+        
+        // Create impact chart
+        const impactCounts = countOccurrences(asset.impacts);
+        new Chart(document.getElementById(`impact-chart-${asset.name.replace(/\s+/g, '-')}`), {
+            type: 'doughnut',
+            data: {
+                labels: impactCounts.map(item => item.value),
+                datasets: [{
+                    data: impactCounts.map(item => item.count),
+                    backgroundColor: impactCounts.map(item => {
+                        switch(item.value) {
+                            case 'high': return '#f14668';
+                            case 'medium': return '#ffdd57';
+                            case 'low': return '#48c774';
+                            default: return '#dbdbdb';
+                        }
+                    })
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Create sentiment chart
+        const sentimentCounts = countOccurrences(asset.sentiments);
+        new Chart(document.getElementById(`sentiment-chart-${asset.name.replace(/\s+/g, '-')}`), {
+            type: 'doughnut',
+            data: {
+                labels: sentimentCounts.map(item => item.value),
+                datasets: [{
+                    data: sentimentCounts.map(item => item.count),
+                    backgroundColor: sentimentCounts.map(item => {
+                        switch(item.value) {
+                            case 'bullish': return '#48c774';
+                            case 'neutral': return '#dbdbdb';
+                            case 'bearish': return '#f14668';
+                            default: return '#dbdbdb';
+                        }
+                    })
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
     });
 }
 

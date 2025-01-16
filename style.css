@@ -97,6 +97,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+#assets-overview canvas {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
 .tag {
     transition: transform 0.2s ease;
 }
