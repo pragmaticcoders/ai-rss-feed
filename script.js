@@ -51,7 +51,14 @@ function displayFeeds(feedsArray) {
                     <p class="title">${feed.title}</p>
                     <p class="subtitle">${new Date(feed.publication_date).toLocaleString()}</p>
                     <div class="content">
-                        ${feed.summary}
+                         <div class="summary-section">
+                        ${feed.summary.split('Key Takeaways:')[0]}
+                        </div>
+                        <br>
+                        <div class="key-takeaways-section">
+                            <strong>Key takeaways:</strong>
+                            ${(feed.summary.split('Key Takeaways:')[1] || '').split('•').join('<br>•')}
+                        </div>
                         <br>
                         <a href="${feed.source_url}" target="_blank" class="button is-link is-small mt-3">Read More</a>
                     </div>
