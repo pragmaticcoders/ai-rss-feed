@@ -102,6 +102,19 @@ body {
     margin: 0 auto;
 }
 
+#asset-select {
+    min-width: 200px;
+}
+
+#asset-select optgroup {
+    font-weight: 600;
+    color: #363636;
+}
+
+#asset-select option {
+    padding: 4px;
+}
+
 .tag {
     transition: transform 0.2s ease;
 }
