@@ -2,6 +2,9 @@
 const API_URL = process.env.URL || 'https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5';
 
 function fetchFeeds() {
+    // Show loading indicator
+    document.getElementById('loading').classList.remove('is-hidden');
+    
     const limitInput = document.querySelector('input[name="limit"]');
     const limit = limitInput.value || 10;
 
@@ -20,9 +23,11 @@ function fetchFeeds() {
     .then(data => {
         displayFeeds(data.data);
         updateAssetsOverview(data.data);
+        document.getElementById('loading').classList.add('is-hidden');
     })
     .catch(error => {
         console.error('Error fetching feeds:', error);
+        document.getElementById('loading').classList.add('is-hidden');
     });
 }
 
