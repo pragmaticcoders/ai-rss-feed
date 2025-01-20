@@ -280,6 +280,21 @@ document.getElementById('chat-send-button').addEventListener('click', function()
 });
 
 function sendMessageToServer() {
+    // Show loading indicator
+    const chatWindow = document.getElementById('chat-window');
+    const loadingElement = document.createElement('div');
+    loadingElement.classList.add('message', 'is-assistant');
+    loadingElement.innerHTML = `
+        <div class="message-body loading-message">
+            <span class="icon">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </span>
+            <span>Thinking...</span>
+        </div>
+    `;
+    chatWindow.appendChild(loadingElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+
     const requestData = {
         messages: messages,
         articles: articles
@@ -294,6 +309,12 @@ function sendMessageToServer() {
     })
     .then(response => response.json())
     .then(data => {
+        // Remove loading message
+        const loadingMessage = document.querySelector('.loading-message');
+        if (loadingMessage) {
+            loadingMessage.parentElement.remove();
+        }
+
         // The response is a message from the assistant
         const assistantMessage = data;
         messages.push(assistantMessage);

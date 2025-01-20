@@ -156,6 +156,16 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.loading-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.loading-message .icon {
+    margin-right: 0.5rem;
+}
+
 .accordion-content {
     background: white;
     border-radius: 10px;
