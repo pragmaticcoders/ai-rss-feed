@@ -38,11 +38,14 @@ body {
     text-align: center;
 }
 
-#feed-form .button {
+#feed-form button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
     transition: transform 0.2s ease;
 }
 
-#feed-form .button:hover {
+#feed-form button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
