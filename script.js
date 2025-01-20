@@ -1,6 +1,10 @@
 // API URL
 const API_URL = 'https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5';
 
+// Variables to store articles and chat messages
+let articles = [];
+let messages = [];
+
 function fetchFeeds() {
     // Show loading indicator
     document.getElementById('loading').classList.remove('is-hidden');
@@ -29,6 +33,7 @@ function fetchFeeds() {
             console.error('Invalid data format received:', data);
             return;
         }
+        articles = data.data;
         displayFeeds(data.data);
         updateAssetsOverview(data.data);
         document.getElementById('loading').classList.add('is-hidden');
@@ -241,3 +246,90 @@ document.getElementById('asset-select').addEventListener('change', function() {
 
 // Initial fetch when page loads
 fetchFeeds();
+
+// Accordion toggle for Chat section
+document.getElementById('chat-toggle').addEventListener('click', function() {
+    const chatContent = document.getElementById('chat-section');
+    chatContent.classList.toggle('is-hidden');
+});
+
+// Handle chat message send button click
+document.getElementById('chat-send-button').addEventListener('click', function() {
+    const inputField = document.getElementById('chat-input');
+    const messageContent = inputField.value.trim();
+
+    if (messageContent !== '') {
+        const userMessage = {
+            role: 'user',
+            content: messageContent
+        };
+        messages.push(userMessage);
+
+        // Clear the input field
+        inputField.value = '';
+
+        // Update the chat window
+        displayMessages();
+
+        // Proceed to send the message to the server
+        sendMessageToServer();
+    }
+});
+
+function sendMessageToServer() {
+    const requestData = {
+        messages: messages,
+        articles: articles
+    };
+
+    fetch('<YOUR_CHAT_API_ENDPOINT>', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // The response is a message from the assistant
+        const assistantMessage = data;
+        messages.push(assistantMessage);
+
+        // Update the chat window to display the new message
+        displayMessages();
+    })
+    .catch(error => {
+        console.error('Error sending message to server:', error);
+    });
+}
+
+function displayMessages() {
+    const chatWindow = document.getElementById('chat-window');
+    chatWindow.innerHTML = '';
+
+    messages.forEach(message => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+
+        if (message.role === 'user') {
+            messageElement.classList.add('is-user');
+            messageElement.innerHTML = `
+                <div class="message-body has-background-primary has-text-white">
+                    ${message.content}
+                </div>
+            `;
+        } else if (message.role === 'assistant') {
+            messageElement.classList.add('is-assistant');
+            messageElement.innerHTML = `
+                <div class="message-body has-background-light">
+                    ${message.content}
+                </div>
+            `;
+        }
+
+        chatWindow.appendChild(messageElement);
+    });
+
+    // Scroll to the bottom of the chat window
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}

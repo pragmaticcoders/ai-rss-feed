@@ -143,6 +143,25 @@
             </div>
         </div>
 
+        <div class="accordion">
+            <div class="accordion-header">
+                <button class="button is-fullwidth" id="chat-toggle">Chat</button>
+            </div>
+            <div class="accordion-content is-hidden" id="chat-section">
+                <div id="chat-window" class="box" style="height: 300px; overflow-y: auto;">
+                    <!-- Chat messages will be displayed here -->
+                </div>
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input" type="text" id="chat-input" placeholder="Type your message">
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary" id="chat-send-button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <div class="content has-text-centered">
                 <p>&copy; 2025 Pragmatic Coders</p>
