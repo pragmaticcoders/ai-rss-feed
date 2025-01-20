@@ -34,8 +34,8 @@ function fetchFeeds() {
             return;
         }
         articles = data.data;
-        displayFeeds(data.data);
-        updateAssetsOverview(data.data);
+        displayFeeds([data.data]); // Wrap in array to maintain compatibility
+        updateAssetsOverview([data.data]); // Wrap in array to maintain compatibility
         document.getElementById('loading').classList.add('is-hidden');
     })
     .catch(error => {
@@ -48,11 +48,11 @@ function displayFeeds(feedsArray) {
     const feedsContainer = document.getElementById('feeds');
     feedsContainer.innerHTML = '';
 
-    feedsArray.forEach((feeds, groupIndex) => {
+    feedsArray.forEach((feeds) => {
         feeds.forEach((feed, index) => {
             const feedElement = document.createElement('div');
             feedElement.classList.add('card', 'mb-5');
-            feedElement.style.animationDelay = `${(groupIndex * feeds.length + index) * 0.1}s`;
+            feedElement.style.animationDelay = `${index * 0.1}s`;
 
             feedElement.innerHTML = `
                 <div class="card-content">
