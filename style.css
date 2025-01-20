@@ -203,13 +203,13 @@ body {
 }
 
 .accordion-header button {
-    background-color: #f5f7fa;
+    background-color: white;
     border: 1px solid #dbdbdb;
     transition: background-color 0.3s ease;
 }
 
 .accordion-header button:hover {
-    background-color: #eef0f4;
+    background-color: #f5f7fa;
 }
 
 .accordion-header button:focus {
