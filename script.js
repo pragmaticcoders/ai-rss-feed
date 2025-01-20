@@ -316,15 +316,17 @@ function displayMessages() {
 
         if (message.role === 'user') {
             messageElement.classList.add('is-user');
+            messageElement.style.textAlign = 'right';
             messageElement.innerHTML = `
-                <div class="message-body has-background-primary has-text-white">
+                <div class="message-body">
                     ${message.content}
                 </div>
             `;
         } else if (message.role === 'assistant') {
             messageElement.classList.add('is-assistant');
+            messageElement.style.textAlign = 'left';
             messageElement.innerHTML = `
-                <div class="message-body has-background-light">
+                <div class="message-body">
                     ${message.content}
                 </div>
             `;
