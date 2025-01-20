@@ -155,13 +155,20 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.accordion-content {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #chat-window {
-    background-color: white;
+    background-color: #f5f7fa;
     border: 1px solid #dbdbdb;
     border-radius: 10px;
     padding: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #chat-input {
