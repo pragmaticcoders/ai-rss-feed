@@ -55,15 +55,20 @@
                         </button>
                     </div>
                     <div class="accordion-content is-hidden" id="chat-section">
-                        <div id="chat-window" class="box" style="height: 300px; overflow-y: auto;">
+                        <div id="chat-window" style="height: 300px; overflow-y: auto;">
                             <!-- Chat messages will be displayed here -->
                         </div>
-                        <div class="field has-addons">
+                        <div class="field is-grouped">
                             <div class="control is-expanded">
-                                <input class="input" type="text" id="chat-input" placeholder="Type your message">
+                                <input class="input" type="text" id="chat-input" placeholder="Ask me about the financial feeds...">
                             </div>
                             <div class="control">
-                                <button class="button is-primary" id="chat-send-button">Send</button>
+                                <button class="button" id="chat-send-button">
+                                    <span class="icon">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </span>
+                                    <span>Send</span>
+                                </button>
                             </div>
                         </div>
                     </div>

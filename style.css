@@ -131,23 +131,55 @@ body {
 /* Chat message styles */
 .message.is-user .message-body {
     text-align: right;
-    background-color: #209cee;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    border: none;
+    margin-left: auto;
 }
 
 .message.is-assistant .message-body {
     text-align: left;
-    background-color: #f5f5f5;
+    background-color: white;
     color: #363636;
+    border: 1px solid #dbdbdb;
+    margin-right: auto;
 }
 
 .message-body {
     margin: 0.5rem 0;
     padding: 0.75rem 1rem;
-    border-radius: 5px;
+    border-radius: 10px;
     display: inline-block;
     max-width: 80%;
     word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#chat-window {
+    background-color: #f5f7fa;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#chat-input {
+    border-radius: 20px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+#chat-send-button {
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+#chat-send-button:hover {
+    transform: scale(1.05);
 }
 
 @keyframes fadeIn {
