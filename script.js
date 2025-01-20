@@ -285,7 +285,7 @@ function sendMessageToServer() {
         articles: articles
     };
 
-    fetch('<YOUR_CHAT_API_ENDPOINT>', {
+    fetch('https://hook.eu1.make.com/m13q3sbjrxohq49ks9dn8o17mvvyv7kh', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
