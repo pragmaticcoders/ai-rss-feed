@@ -158,3 +158,20 @@ body {
 .card {
     animation: fadeIn 0.5s ease forwards;
 }
+.accordion-header button {
+    background-color: #f5f7fa;
+    border: 1px solid #dbdbdb;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header button:hover {
+    background-color: #eef0f4;
+}
+
+.accordion-header button:focus {
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.25);
+}
+
+.accordion-content {
+    transition: all 0.3s ease-in-out;
+}

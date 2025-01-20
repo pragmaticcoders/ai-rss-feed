@@ -250,7 +250,10 @@ fetchFeeds();
 // Accordion toggle for Chat section
 document.getElementById('chat-toggle').addEventListener('click', function() {
     const chatContent = document.getElementById('chat-section');
+    const chevronIcon = this.querySelector('.fa-chevron-down');
     chatContent.classList.toggle('is-hidden');
+    chevronIcon.style.transform = chatContent.classList.contains('is-hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    chevronIcon.style.transition = 'transform 0.3s ease';
 });
 
 // Handle chat message send button click
