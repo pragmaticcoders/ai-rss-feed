@@ -14,6 +14,32 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.company-logo:hover {
+    transform: scale(1.05);
+}
+
+.company-description {
+    font-size: 1.1rem;
+    margin-top: 0.5rem !important;
+    opacity: 0.9;
+}
+
+.company-description a {
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.company-description a:hover {
+    opacity: 0.8;
+}
+
 #legend {
     background: white;
     padding: 1.5rem;
