@@ -19,6 +19,7 @@ body {
     width: auto;
     margin-right: 1.5rem;
     transition: transform 0.3s ease;
+    filter: brightness(0) invert(1); /* Makes the green logo white */
 }
 
 .company-logo:hover {
