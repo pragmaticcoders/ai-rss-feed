@@ -10,20 +10,20 @@ let isAuthorized = false;
 
 
 function fetchFeeds() {
-    if (!isAuthorized && paywallEnabled) {
-        return;
-    }
-
     // Show loading indicator
     document.getElementById('loading').classList.remove('is-hidden');
     
     const limitInput = document.querySelector('input[name="limit"]');
     const assetSelect = document.querySelector('select[name="asset"]');
-    const limit = limitInput.value || 10;
+    let limit = parseInt(limitInput.value || 10)
+    if (!isAuthorized && paywallEnabled) {
+        limit = 3;
+    }
+
     const selectedAsset = assetSelect.value;
 
     const requestData = {
-        "limit": parseInt(limit),
+        "limit": limit,
         "asset": selectedAsset
     };
 
