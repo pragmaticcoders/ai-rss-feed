@@ -11,186 +11,229 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header class="hero is-primary">
-            <div class="hero-body">
-                <div class="columns is-vcentered">
-                    <div class="column is-narrow">
-                        <img src="Signet 100px Small.png" alt="Pragmatic Coders Logo" class="company-logo">
-                    </div>
-                    <div class="column">
-                        <h1 class="title">AI Financial Feeds by Pragmatic Coders</h1>
-                        <p class="subtitle company-description">
-                            This tool was brought to you by <a href="https://pragmaticcoders.com" class="has-text-white">Pragmatic Coders</a> - experts in FinTech
-                        </p>
-                    </div>
+<div class="container">
+    <header class="hero is-primary">
+        <div class="hero-body">
+            <div class="columns is-vcentered">
+                <div class="column is-narrow">
+                    <img src="Signet 100px Small.png" alt="Pragmatic Coders Logo" class="company-logo">
                 </div>
-            </div>
-        </header>
-
-        <div class="columns">
-            <div class="column is-two-thirds">
-                <section id="legend">
-                    <h2 class="subtitle">Legend</h2>
-                    <div class="columns">
-                        <div class="column">
-                            <h3 class="is-size-6 mb-2">Impact Levels</h3>
-                            <div class="tags">
-                                <span class="tag is-success">Low Impact</span>
-                                <span class="tag is-warning">Medium Impact</span>
-                                <span class="tag is-danger">High Impact</span>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <h3 class="is-size-6 mb-2">Sentiment Indicators</h3>
-                            <div>
-                                <span class="icon has-text-success"><i class="fas fa-arrow-up"></i></span> Bullish
-                                <span class="icon has-text-grey"><i class="fas fa-minus"></i></span> Neutral
-                                <span class="icon has-text-danger"><i class="fas fa-arrow-down"></i></span> Bearish
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="accordion">
-                    <div class="accordion-header">
-                        <button class="button is-fullwidth" id="chat-toggle">
-                            <span class="icon">
-                                <i class="fas fa-comments"></i>
-                            </span>
-                            <span>Chat with AI Assistant</span>
-                            <span class="icon">
-                                <i class="fas fa-chevron-down"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="accordion-content is-hidden" id="chat-section">
-                        <div id="chat-window" style="height: 300px; overflow-y: auto;">
-                            <!-- Chat messages will be displayed here -->
-                        </div>
-                        <div class="field is-grouped">
-                            <div class="control is-expanded">
-                                <input class="input" type="text" id="chat-input" placeholder="Ask me about the financial feeds...">
-                            </div>
-                            <div class="control">
-                                <button class="button" id="chat-send-button">
-                                    <span class="icon">
-                                        <i class="fas fa-paper-plane"></i>
-                                    </span>
-                                    <span>Send</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <form id="feed-form" class="field is-grouped is-align-items-center">
-                    <div class="control is-expanded">
-                        <div class="field has-addons">
-                            <div class="control">
-                                <span class="button is-static">Last</span>
-                            </div>
-                            <div class="control">
-                                <input class="input" type="number" name="limit" min="1" value="10" style="width: 80px;">
-                            </div>
-                            <div class="control">
-                                <span class="button is-static">feeds</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="control">
-                        <div class="select">
-                            <select name="asset" id="asset-select">
-                                <option value="all">All Assets</option>
-                                <optgroup label="Traditional Markets">
-                                    <option value="stocks">Stocks</option>
-                                    <option value="bonds">Bonds</option>
-                                    <option value="indexes">Indexes</option>
-                                </optgroup>
-                                <optgroup label="Commodities">
-                                    <option value="crude_oil">Crude Oil</option>
-                                    <option value="heating_oil">Heating Oil</option>
-                                    <option value="natural_gas">Natural Gas</option>
-                                    <option value="coal">Coal</option>
-                                    <option value="gold">Gold</option>
-                                    <option value="silver">Silver</option>
-                                    <option value="platinum">Platinum</option>
-                                    <option value="copper">Copper</option>
-                                    <option value="iron">Iron</option>
-                                    <option value="aluminum">Aluminum</option>
-                                    <option value="lithium">Lithium</option>
-                                    <option value="nickel">Nickel</option>
-                                    <option value="zinc">Zinc</option>
-                                    <option value="wheat">Wheat</option>
-                                    <option value="corn">Corn</option>
-                                    <option value="soybeans">Soybeans</option>
-                                    <option value="coffee">Coffee</option>
-                                    <option value="cocoa">Cocoa</option>
-                                    <option value="sugar">Sugar</option>
-                                    <option value="cotton">Cotton</option>
-                                    <option value="lumber">Lumber</option>
-                                </optgroup>
-                                <optgroup label="Forex">
-                                    <option value="EUR/USD">EUR/USD</option>
-                                    <option value="USD/JPY">USD/JPY</option>
-                                    <option value="GBP/USD">GBP/USD</option>
-                                    <option value="USD/CHF">USD/CHF</option>
-                                    <option value="AUD/USD">AUD/USD</option>
-                                    <option value="USD/CAD">USD/CAD</option>
-                                    <option value="NZD/USD">NZD/USD</option>
-                                    <option value="EUR/GBP">EUR/GBP</option>
-                                    <option value="EUR/JPY">EUR/JPY</option>
-                                    <option value="GBP/JPY">GBP/JPY</option>
-                                    <option value="EUR/CHF">EUR/CHF</option>
-                                    <option value="EUR/AUD">EUR/AUD</option>
-                                    <option value="USD/SGD">USD/SGD</option>
-                                    <option value="USD/HKD">USD/HKD</option>
-                                    <option value="USD/MXN">USD/MXN</option>
-                                </optgroup>
-                                <optgroup label="Cryptocurrencies">
-                                    <option value="BTC">Bitcoin (BTC)</option>
-                                    <option value="ETH">Ethereum (ETH)</option>
-                                    <option value="BNB">Binance Coin (BNB)</option>
-                                    <option value="SOL">Solana (SOL)</option>
-                                    <option value="XRP">XRP</option>
-                                    <option value="ADA">Cardano (ADA)</option>
-                                    <option value="DOGE">Dogecoin (DOGE)</option>
-                                    <option value="DOT">Polkadot (DOT)</option>
-                                    <option value="MATIC">Polygon (MATIC)</option>
-                                    <option value="AVAX">Avalanche (AVAX)</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control">
-                        <button class="button" type="submit">
-                            <span class="icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </span>
-                            <span>Fetch</span>
-                        </button>
-                    </div>
-                </form>
-
-                <div id="loading" class="is-hidden">
-                    <progress class="progress is-primary is-small" max="100"></progress>
-                </div>
-                <div id="feeds"></div>
-            </div>
-
-            <div class="column">
-                <div id="assets-overview">
-                    <h2 class="title is-4">Assets Overview</h2>
+                <div class="column">
+                    <h1 class="title">AI Financial Feeds by Pragmatic Coders</h1>
+                    <p class="subtitle company-description">
+                        This tool was brought to you by <a href="https://pragmaticcoders.com" class="has-text-white">Pragmatic Coders</a> - experts in FinTech
+                    </p>
                 </div>
             </div>
         </div>
+    </header>
 
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>&copy; 2025 Pragmatic Coders</p>
+    <div class="columns">
+        <div class="column is-two-thirds">
+
+            <section id="legend">
+                <h2 class="subtitle">Legend</h2>
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="is-size-6 mb-2">Impact Levels</h3>
+                        <div class="tags">
+                            <span class="tag is-success">Low Impact</span>
+                            <span class="tag is-warning">Medium Impact</span>
+                            <span class="tag is-danger">High Impact</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3 class="is-size-6 mb-2">Sentiment Indicators</h3>
+                        <div>
+                            <span class="icon has-text-success"><i class="fas fa-arrow-up"></i></span> Bullish
+                            <span class="icon has-text-grey"><i class="fas fa-minus"></i></span> Neutral
+                            <span class="icon has-text-danger"><i class="fas fa-arrow-down"></i></span> Bearish
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="accordion">
+                <div class="accordion-header">
+                    <button class="button is-fullwidth" id="chat-toggle">
+                            <span class="icon">
+                                <i class="fas fa-comments"></i>
+                            </span>
+                        <span>Chat with AI Assistant</span>
+                        <span class="icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                    </button>
+                </div>
+                <div class="accordion-content is-hidden" id="chat-section">
+                    <div id="chat-window" style="height: 300px; overflow-y: auto;">
+                        <!-- Chat messages will be displayed here -->
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" id="chat-input" placeholder="Ask me about the financial feeds...">
+                        </div>
+                        <div class="control">
+                            <button class="button" id="chat-send-button">
+                                    <span class="icon">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </span>
+                                <span>Send</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
+
+            <form id="feed-form" class="field is-grouped is-align-items-center">
+                <div class="control is-expanded">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <span class="button is-static">Last</span>
+                        </div>
+                        <div class="control">
+                            <input class="input" type="number" name="limit" min="1" value="10" style="width: 80px;">
+                        </div>
+                        <div class="control">
+                            <span class="button is-static">feeds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="select">
+                        <select name="asset" id="asset-select">
+                            <option value="all">All Assets</option>
+                            <optgroup label="Traditional Markets">
+                                <option value="stocks">Stocks</option>
+                                <option value="bonds">Bonds</option>
+                                <option value="indexes">Indexes</option>
+                            </optgroup>
+                            <optgroup label="Commodities">
+                                <option value="crude_oil">Crude Oil</option>
+                                <option value="heating_oil">Heating Oil</option>
+                                <option value="natural_gas">Natural Gas</option>
+                                <option value="coal">Coal</option>
+                                <option value="gold">Gold</option>
+                                <option value="silver">Silver</option>
+                                <option value="platinum">Platinum</option>
+                                <option value="copper">Copper</option>
+                                <option value="iron">Iron</option>
+                                <option value="aluminum">Aluminum</option>
+                                <option value="lithium">Lithium</option>
+                                <option value="nickel">Nickel</option>
+                                <option value="zinc">Zinc</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="corn">Corn</option>
+                                <option value="soybeans">Soybeans</option>
+                                <option value="coffee">Coffee</option>
+                                <option value="cocoa">Cocoa</option>
+                                <option value="sugar">Sugar</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="lumber">Lumber</option>
+                            </optgroup>
+                            <optgroup label="Forex">
+                                <option value="EUR/USD">EUR/USD</option>
+                                <option value="USD/JPY">USD/JPY</option>
+                                <option value="GBP/USD">GBP/USD</option>
+                                <option value="USD/CHF">USD/CHF</option>
+                                <option value="AUD/USD">AUD/USD</option>
+                                <option value="USD/CAD">USD/CAD</option>
+                                <option value="NZD/USD">NZD/USD</option>
+                                <option value="EUR/GBP">EUR/GBP</option>
+                                <option value="EUR/JPY">EUR/JPY</option>
+                                <option value="GBP/JPY">GBP/JPY</option>
+                                <option value="EUR/CHF">EUR/CHF</option>
+                                <option value="EUR/AUD">EUR/AUD</option>
+                                <option value="USD/SGD">USD/SGD</option>
+                                <option value="USD/HKD">USD/HKD</option>
+                                <option value="USD/MXN">USD/MXN</option>
+                            </optgroup>
+                            <optgroup label="Cryptocurrencies">
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="BNB">Binance Coin (BNB)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="XRP">XRP</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="DOGE">Dogecoin (DOGE)</option>
+                                <option value="DOT">Polkadot (DOT)</option>
+                                <option value="MATIC">Polygon (MATIC)</option>
+                                <option value="AVAX">Avalanche (AVAX)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </span>
+                        <span>Fetch</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="loading" class="loading is-hidden">
+                <progress class="progress is-primary is-small" max="100"></progress>
+            </div>
+            <div id="feeds"></div>
+        </div>
+
+        <div class="column">
+            <div id="stripe-container">
+                <script async
+                        src="https://js.stripe.com/v3/buy-button.js">
+                </script>
+
+                <stripe-buy-button
+                        buy-button-id="buy_btn_1QpoC7C8lrcc79jv6AqsEJkF"
+                        publishable-key="pk_test_51QpnvoC8lrcc79jvsoqf723rzX7ZHA827V5sFuKquTWagVvAQ035hi93F7STMKuiA6cLdQ5nS8UwaDzWGZXWLhhh00dtDyNAA3"
+                >
+                </stripe-buy-button>
+                <div>
+                    <form id="login-form">
+                        <h3 class="is-size-5 mb-3 has-text-weight-semibold">Already paid?</h3>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <label>Enter your email to receive login details:</label>
+                                <input class="input" type="email" name="email" id="sendLoginEmailInput"
+                                placeholder="Email"
+                                />
+                                <span class="tag is-success is-hidden" id="loginMessageSuccess">
+                                    Check your email for login details.
+                                </span>
+                                <span class="tag is-warning is-hidden" id="loginMessageNotPaid">
+                                    Your account was not found or you do not have active subscription.
+                                </span>
+                                <span class="tag is-danger is-hidden" id="loginMessageFailed">
+                                    Something went wrong. Please try again.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-link" type="submit">
+                                    <span>Send activation code</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <div id="assets-overview">
+                <h2 class="title is-4">Assets Overview</h2>
+            </div>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2025 Pragmatic Coders</p>
+        </div>
+    </footer>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
