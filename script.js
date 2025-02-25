@@ -5,7 +5,7 @@ const API_URL = 'https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5';
 let articles = [];
 let messages = [];
 
-const paywallEnabled = false;
+const paywallEnabled = true;
 let isAuthorized = false;
 
 
