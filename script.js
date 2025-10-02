@@ -5,17 +5,25 @@ const API_URL = 'https://n8n.pragmaticcoders.com/webhook/d2433a56-9404-473b-8942
 let articles = [];
 let messages = [];
 
+const paywallEnabled = true;
+let isAuthorized = false;
+
+
 function fetchFeeds() {
     // Show loading indicator
     document.getElementById('loading').classList.remove('is-hidden');
     
     const limitInput = document.querySelector('input[name="limit"]');
     const assetSelect = document.querySelector('select[name="asset"]');
-    const limit = limitInput.value || 10;
+    let limit = parseInt(limitInput.value || 10)
+    if (!isAuthorized && paywallEnabled) {
+        limit = 3;
+    }
+
     const selectedAsset = assetSelect.value;
 
     const requestData = {
-        "limit": parseInt(limit),
+        "limit": limit,
         "asset": selectedAsset
     };
 
@@ -249,6 +257,10 @@ fetchFeeds();
 
 // Accordion toggle for Chat section
 document.getElementById('chat-toggle').addEventListener('click', function() {
+    if (!isAuthorized && paywallEnabled) {
+        return
+    }
+
     const chatContent = document.getElementById('chat-section');
     const chevronIcon = this.querySelector('.fa-chevron-down');
     chatContent.classList.toggle('is-hidden');
@@ -280,6 +292,10 @@ document.getElementById('chat-send-button').addEventListener('click', function()
 });
 
 function sendMessageToServer() {
+    if (!isAuthorized && paywallEnabled) {
+        return;
+    }
+
     // Show loading indicator
     const chatWindow = document.getElementById('chat-window');
     const loadingElement = document.createElement('div');
@@ -359,3 +375,103 @@ function displayMessages() {
     // Scroll to the bottom of the chat window
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
+
+
+function validateAccessToken(token, bearer) {
+    fetch("https://hook.eu1.make.com/4jc6vuhhv9drc2aoaqnp1fbs1c696kbw", {
+        method: 'GET',
+        headers: {
+            'authaccesstoken': token,
+            'bearer': bearer,
+        },
+    })
+        .then(response => {
+            if (response.ok && response.status === 200) {
+                document.getElementById('stripe-container').classList.add('is-hidden')
+                isAuthorized = true;
+                fetchFeeds();
+            }
+        })
+        .catch(error => {
+            console.error('Error during access validation:', error);
+        });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+        if (!paywallEnabled) {
+            document.getElementById('stripe-container').classList.add('is-hidden')
+            return
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let loginToken = urlParams.get('access-token');
+        let hash = urlParams.get('hash');
+
+
+        if (loginToken && hash) {
+            document.cookie = `loginToken=${loginToken}; path=/`;
+            document.cookie = `hash=${hash}; path=/`;
+            validateAccessToken(loginToken, hash);
+        } else {
+            let cookieLoginToken = getCookie('loginToken');
+            let cookieHash = getCookie('hash');
+
+            if (cookieLoginToken && cookieHash) {
+                validateAccessToken(cookieLoginToken, cookieHash);
+            }
+        }
+    }
+)
+
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function sendActivationCode() {
+    // Show loading indicator
+    document.getElementById('loading').classList.remove('is-hidden');
+
+    const emailInput = document.querySelector('input[name="email"]');
+    const email = emailInput.value;
+
+    const requestData = {
+        "email": email,
+    };
+
+    fetch("https://hook.eu1.make.com/171unf87fo759qg4m3acwa5og923jepu", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+        .then(response => {
+            document.getElementById('loading').classList.add('is-hidden');
+            document.getElementById('loginMessageSuccess').classList.add('is-hidden');
+            document.getElementById('loginMessageNotPaid').classList.add('is-hidden');
+            document.getElementById('loginMessageFailed').classList.add('is-hidden');
+
+            if (response.ok && response.status === 200) {
+                document.getElementById('loginMessageSuccess').classList.remove('is-hidden');
+            }
+            else  if (response.status === 402) {
+                document.getElementById('loginMessageNotPaid').classList.remove('is-hidden');
+            }
+            if (response.status === 404) {
+                document.getElementById('loginMessageFailed').classList.remove('is-hidden');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching feeds:', error);
+            document.getElementById('loading').classList.add('is-hidden');
+        });
+}
+
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    sendActivationCode();
+});

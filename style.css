@@ -76,6 +76,29 @@ body {
     transform: scale(1.05);
 }
 
+#login-form {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#login-form .input[type="email"] {
+    width: 100%;
+}
+
+#login-form button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+#login-form button[type="submit"]:hover {
+    transform: scale(1.05);
+}
+
 .card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border-radius: 10px;
@@ -87,11 +110,11 @@ body {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-#loading {
+.loading {
     margin: 1rem 0;
 }
 
-#loading .progress {
+.loading .progress {
     height: 4px;
     border-radius: 2px;
 }
@@ -101,9 +124,35 @@ body {
     100% { margin-left: 100%; }
 }
 
-#loading .progress::-webkit-progress-value {
+.loading .progress::-webkit-progress-value {
     animation: progressAnimation 1.5s infinite linear;
     background: linear-gradient(to right, transparent, #667eea, transparent);
+}
+
+#stripe-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#stripe-container .asset-box {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+#stripe-container .asset-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#stripe-container canvas {
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 #assets-overview {
