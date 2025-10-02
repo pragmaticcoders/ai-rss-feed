@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'https://hook.eu1.make.com/nl5xbbv5a5azame5yyq86lh8xju49vu5';
+const API_URL = 'https://n8n.pragmaticcoders.com/webhook/d2433a56-9404-473b-8942-996c980ae3ae';
 
 // Variables to store articles and chat messages
 let articles = [];
