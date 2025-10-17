@@ -316,7 +316,7 @@ function sendMessageToServer() {
         articles: articles
     };
 
-    fetch('https://hook.eu1.make.com/m13q3sbjrxohq49ks9dn8o17mvvyv7kh', {
+    fetch('https://n8n.pragmaticcoders.com/webhook/6d77edf8-6651-4dd1-a5f8-430e55ef77a8', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
